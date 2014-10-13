@@ -1,0 +1,46 @@
+////////////////////////
+//	Configuration	  //
+////////////////////////
+
+	// fonts
+	$font-bodyText: "Open Sans", sans-serif;
+	$font-title: "PT Sans", serif;
+	$font-menus: "PT Sans";
+
+	// font sizes (scaled according to size of window)
+	$fontSize-title: 2.3rem; // Main title 
+	$fontSize-xxl: 1.3rem;
+	$fontSize-xl: 1.1rem; //nav-menus 
+	$fontSize-large: 1rem; // sidebar menus
+	$fontSize-medium: 1rem; // menu headers
+	$fontSize-small: 0.9rem; // menu options
+	$fontSize-xs: 0.7rem; // chevrons
+
+	// background colors
+	$background-base: #333333;
+	$background-dark: #222222;
+	$background-light: #444444;
+
+	// font colors
+	$color-title: #eeeeee;
+		$color-highlight: $color-title;
+	$color-menu: #cccccc;
+	$color-menu-item: #bbbbbb;
+	$color-icons: #666666;
+		$color-placeholder: #666666;
+
+	$color-disabled: #555555;
+	$color-disabled-dark: #333333;
+
+	// highlight
+	$highlight: #01c7ff;
+	$warning: #d9534f;
+
+	// div sizes
+	$navHeight: 50px;
+
+	// media sizes
+	$screen-xs-max: 767px;
+	$screen-md-min: 768px;
+	$screen-md-max: 991px;
+	$screen-lg-min: 992px;

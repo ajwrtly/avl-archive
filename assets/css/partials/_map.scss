@@ -1,0 +1,75 @@
+        #map {
+            height: 100%;
+            width: 100%;
+            div
+            {
+            	z-index: 0;
+            }
+            #collapsedNavigation {
+                display: none;
+            }
+
+            .ol-logo-only
+            {
+                display: none;
+            }
+
+            .ol-zoom
+            {
+            	@media (max-width: 767px)
+            	{
+            		display: none;
+            	}
+            	// push the zoom controls down beneath the main nav bar
+            	margin-top: $navHeight;
+            	margin-left: 10px;
+            	background: rgba(255,255,255, 0.2);
+            	left: 0;
+            	border-radius: 0;
+            	padding: 0;
+
+            	button
+            	{
+            		background-color: $background-base;
+            		border-radius: 0;
+            		&:hover
+            		{
+            			.fa //:not(.zoom-disabled)
+            			{
+            				&.zoom-disabled
+            				{
+            					color: $color-disabled;
+            				}
+            				&:not(.zoom-disabled)
+            				{
+                                cursor: pointer;
+            					color: $highlight;
+            				}
+            				
+            			}
+
+
+            		}
+            	}
+            	.fa
+            	{
+            		
+    		        &.zoom-disabled
+    				{
+    					color: $color-disabled;
+    				}
+    				&:not(.zoom-disabled)
+    				{
+                        cursor: pointer;
+    					color: $color-menu;
+    				}
+            	}
+            	
+    	        .fa-chevron-up
+    			{
+    				left: 1px;
+    			}
+       			
+            }
+
+        }

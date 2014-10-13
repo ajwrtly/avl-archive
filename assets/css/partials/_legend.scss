@@ -1,0 +1,127 @@
+	        #legend
+	        {
+            	background-color: $background-dark;
+
+            	@media (max-width: 767px)
+            	{
+            		display: none;
+            	}
+
+            	&.legend-collapsed 
+            	{
+		            background-color: $background-base;
+		            color: $color-disabled;
+		            position: absolute;
+		            bottom: 20px;
+		            right: 20px;
+		            line-height: 40px;
+		            text-align: center;
+
+			        &:hover {
+			            color: $highlight;
+			            cursor: pointer;
+		        	}
+
+		        	.fa-chevron-down
+		        	{
+		        		padding: 12px;
+		        	}
+	        	}
+
+	        	&.legend-selected {
+		            position: absolute;
+		            bottom: 20px;
+		            right: 20px;
+		            width: auto;
+		            height: auto;
+		            padding: 7px 7px 10px 7px;
+		            color: $color-menu;
+		            .legend-heading
+		            {
+		            	font-size: $fontSize-small;
+		            	text-transform: uppercase;
+		            	white-space: nowrap;
+		            	padding: 3px 15px 3px 5px;
+		            }
+
+		            .fa
+		            {
+		            	float: right;
+		            }
+		            .fa-chevron-down {
+		                font-size: $fontSize-medium;
+		                color: $color-menu;
+		                &:hover
+		                {
+				            color: $highlight;
+		                	cursor: pointer;                	
+		                }
+		            }
+
+		            .fa-chevron-up:hover 
+		            {
+		            	color: $color-menu;
+		                cursor: pointer;
+		            }
+
+		            #legendContents {
+		                display: block;
+		            }
+		            .legend-item
+		            {
+		            	
+		            	.legend-item-title
+		            	{
+		            		margin: 0;
+		            		////font-size: 12px;
+		            		text-transform: uppercase;
+		            		color: $color-menu-item;
+		            	}
+		            }
+		            hr 
+		            {
+		            	border: 0;
+						border-top: 6px solid #eee;
+						
+						display: inline;
+						float: left;
+		            }
+	            	hr.yellow
+					{
+						border-color: #FFCD00;
+					}
+					hr.green
+					{
+						border-color: #2ECC71;
+					}
+					hr.blue
+					{
+						border-color: #01C7FF;
+					}
+					hr.orangered
+					{
+						border-color: #FF6D00;
+					}
+
+					hr.line
+					{
+						width: 60px;
+						border-radius: 5px;
+						margin: 5px 5px 0 20px;
+					}
+					hr.dot
+					{
+						width: 10px;
+						border-top-width: 10px;
+						border-radius: 10px;
+						margin: 3px 5px 0 20px;
+					}
+	        	}
+
+	            .fa-chevron-down {
+	                font-size: $fontSize-medium;
+	            }
+	            #legendContents {
+	                display: none;
+	            }
+	        }

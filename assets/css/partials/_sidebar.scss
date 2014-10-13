@@ -1,0 +1,364 @@
+
+#sidebar
+{
+	display: none;
+	position: absolute;
+	top: $navHeight;
+	left: 0;
+	bottom: 0;
+	width: 20%;
+	background-color: $background-dark;
+	color: $color-menu;
+	
+	/* Smartphones (portrait and landscape) ----------- */
+	@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+		display: none;
+	}
+
+	/* iPads (portrait and landscape) ----------- */
+	@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+		width: 25%;
+	}
+
+	/* iPads (landscape) ----------- */
+	@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+		width: 25%;
+	}
+
+	/* iPads (portrait) ----------- */
+	@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+		width: 25%;
+	}
+
+	/* Desktops and laptops ----------- */
+	@media only screen  and (min-width : 1025px) and (max-width: 1199px) {
+		width: 25%;
+	}
+
+	/* Desktops and laptops ----------- */
+	@media only screen  and (min-width : 1200px) and (max-width: 1399px) {
+		width: 20%;
+	}
+
+	/* Large screens ----------- */
+	@media only screen  and (min-width : 1400px) {
+		width: 15%;
+	}
+
+
+	.sidebar-menu-active
+	{
+		color: $highlight;
+	}
+
+	.sidebar-content
+	{
+		border-top-width: 1px;
+		border-width: 0;
+		border-style: solid;
+		border-color: $color-disabled;
+		background-color: $background-dark;
+		width: 100%;
+		display: none;
+		overflow: hidden;
+
+		#analysisError
+		{
+			display: none;
+			color: $warning;
+			font-size: 0.7rem;
+			padding: 10px 20px 10px 20px;
+			text-align: center;
+			
+		}
+
+		.clearAnalysis 
+		{
+			text-align: right;
+			width: auto;
+			line-height: 12px;
+			padding: 0 15px 10px 0;
+			font-size: $fontSize-medium;
+
+			a:not(.disabled)
+			{
+				//font-size: $fontSize-small;
+				color: $color-disabled;
+				text-decoration: none;
+				padding-left: 10px; 
+
+				&:hover
+				{
+					text-decoration: none;
+					color: $color-menu;
+					cursor: pointer;
+				}
+			}
+			a.disabled
+			{
+				color: $color-disabled-dark;
+				&:hover
+				{
+					text-decoration: none;
+					color: $color-disabled-dark;
+					cursor: default;
+				}
+			}
+		}
+
+		&#activeAssetContainer
+		{
+			position: absolute;
+			border-bottom-width: 0px;
+			overflow: hidden;
+			width: 100%;
+			#downScroll
+			{
+				display: none;
+				position: absolute;
+				bottom: 10px;
+				left: 45%;
+				font-size: $fontSize-title;
+				color: rgba(85, 85, 85, 0.75)
+			}
+			#upScroll
+			{
+				display: none;
+				position: absolute;
+				top: 50px;
+				left: 45%;
+				font-size: $fontSize-title;
+				color: rgba(85, 85, 85, 0.75)
+			}
+		}
+
+		.assetListItem
+		{
+			padding-left: 20px;
+			display: block;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			border-style: solid;
+			border-width: 0;
+			border-top-width: 1px;
+			border-color: $background-base;
+			font-size: $fontSize-small;
+			.listItem-time
+			{
+				float: right;
+				padding-right: 20px;
+				font-weight: bold;
+				&.time-recent
+				{
+					color: #79FF33;
+				}
+				&.time-medium
+				{
+					color: #FFE633;
+				}
+				&.time-late
+				{
+					color: #FF5933;
+				}
+				&.time-old
+				{
+					color: $color-disabled;
+				}
+			}
+			.listItem-hiddenTime
+			{
+				display: none;
+				float: right;
+				padding-right: 20px;
+				font-weight: bold;
+				color: $color-disabled;
+			}
+
+			&:hover
+			{
+				background-color: $background-base;
+				cursor: pointer;								
+			}
+			&:last-child
+			{
+				border-bottom-width: 1px;
+			}
+		}
+
+
+		#assetList
+		{
+			overflow: scroll;
+			.fa-refresh
+			{
+				position: absolute;
+				left: 45%;
+				top: 45%;
+				font-size: 2rem;
+				color: $color-disabled; 
+				animation: spin 1s infinite steps(8);
+				-webkit-animation: spin 1s infinite linear;
+			}
+		}
+
+		#searchResults
+		{
+			overflow: scroll;
+		}
+
+		.trackingList
+		{
+			display: block;
+			
+			.trackingListItem
+			{
+				padding-left:30px;
+				padding-top: 8px;
+				padding-bottom: 8px;
+				display: block;
+				border-style: solid;
+				border-bottom-width: 1px;
+				border-left-width: 0;
+				border-right-width: 0;
+				border-color: $background-base;
+				border-top-width: 0;
+				font-weight: bold;
+				font-size: $fontSize-small;
+				.fa-times:hover
+				{
+					color: $color-menu;
+					cursor: pointer;
+				}
+				&:last-child
+				{
+					border-bottom-width: 0px;
+				}
+			}
+			.fa-times
+			{
+				font-size: $fontSize-xs;
+				padding-right: 15px;
+				top: 50%;
+				color: $color-disabled;
+			}
+			.fa-list
+			{
+				float: right;
+				padding-right: 11px;
+				padding-top: 3px;
+				color: $color-disabled;
+				font-size: $fontSize-medium;
+			}
+			.fa-external-link
+			{
+				//font-size: 12px;
+				color: $color-disabled;
+				float: right;
+				padding-right: 15px;
+				padding-top: 4px;
+				&:hover
+				{
+					color: $highlight;
+					cursor: pointer;
+				}
+			}
+		}
+
+	}
+
+	.sidebar-menu, .panel-link
+	{
+		font-size: $fontSize-large;
+		font-family: $font-menus;
+		letter-spacing: 2px;
+		border-color: $color-disabled;
+		border-style: solid;
+		background-color: $background-base;
+		height: 50px;
+		padding-left: 15px;
+		line-height: 50px;
+		border-width: 0;
+		text-transform: uppercase;
+
+		.fa-warning
+		{
+			color: $warning;
+		}
+
+		&:not(.sidebar-menu-open):hover
+		{
+			background-color: $background-light;
+			//border-width: 0;
+			cursor: pointer;
+		}
+
+		.fa-chevron-down
+		{
+			display: inline-block;
+			float: right;
+			padding-right: 15px;
+			padding-top: 20px;
+			color: $color-disabled;
+		}
+
+		.fa-chevron-up
+		{
+			display: none;
+		}
+
+		.fa:not(.fa-warning)
+		{
+			color: $color-icons;
+		}
+
+		.icon-left
+		{
+			font-size: $fontSize-small;
+			margin-right: 10px;
+		}
+
+		.fa-bar-chart-o
+		{
+
+		}
+	}
+
+	.sidebar-menu
+	{
+		border-top-width: 1px;
+		
+		.fa-chevron-up
+		{
+			color: $highlight;
+
+		}
+	}
+
+	#viewAllAssets
+	{
+		//border-top-width: 1px;
+		border-bottom-width: 0px;
+		position: absolute;
+		bottom: 0;
+	}
+
+	.sidebar-menu-open
+	{
+		background-color: $background-light;
+		border-width: 0;
+		&:hover:not(.sticky)
+		{
+			background-color: $background-base;
+			border-width: 0;
+			cursor: pointer;
+		}
+		.fa-chevron-down
+		{
+			display: none;
+		}
+
+	}
+
+
+
+}

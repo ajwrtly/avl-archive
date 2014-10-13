@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title> AVL Saint Paul v0.1.5 </title>
+
+		<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+
+		<link href="assets/css/lib/ol.css" rel="stylesheet">
+		<link href="assets/css/lib/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+		<link rel="stylesheet" href="assets/css/lib/font-awesome.min.css">
+		<link href="assets/css/custom.css" rel="stylesheet">
+
+		<script src="assets/js/lib/ol.js" type="text/javascript"></script>
+		<script src="assets/js/lib/jquery-1.11.1.min.js" defer></script>
+		<script src="assets/js/lib/jquery-ui-1.10.4.custom.js" defer></script>
+		<script src="assets/js/lib/moment.js" defer></script>
+		<script src="assets/js/lib/jquery.datetimepicker.js" defer></script>
+		<script src="assets/js/config.js" defer></script>
+		<script src="assets/js/custom.js" defer></script>
+
+	</head>
+
+	<body>
+
+		<div id="map"></div>
+
+		<nav>
+			<div id="nav-bar"></div>
+
+			<div id="nav-collapsed-button">
+				<span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+			</div>
+
+			<span id="nav-menu-container">
+
+				<span class="menu-container-left">
+					<div class="menu-panel-group">
+						<div class="nav-menu sticky" data-target="sidebar" id="menu-assets"><i class="fa fa-map-marker icon-left"></i>Assets</div>
+						<div id="panel-assets" class="nav-panel"> 
+							<div id="collapsed-trackingContainer">
+								Tracking:
+								<span id="collapsed-trackingList"></span>
+							</div>
+							<div class="centerContents">
+								<input type="text" placeholder="Search for an asset..." id="collapsed-assetSearchBox" />
+							</div>
+							<div id="collapsed-searchResults"></div>
+						</div>
+
+					</div>
+				</span>
+
+				<span class="menu-container-right">
+					<div class="menu-panel-group">
+						<div id="menu-fleets"  class="nav-menu" data-target="panel-fleets"><i class="fa fa-truck icon-left"></i><span id="currentFleet">All</span></div>
+						<div id="panel-fleets" class="nav-panel">
+							<!-- populated by javascript -->
+						</div>
+					</div>
+
+					<div class="menu-panel-group">
+						<div id="menu-layers"  class="nav-menu" data-target="panel-layers"><span class="collapsed-navTitle">Layers</span><i class="fa fa-database icon-center"></i></div>
+						<div id="panel-layers" class="nav-panel">
+							
+								<span class="panel-header">basemaps</span>
+								<span class="optionList singleSelect" name="basemaps">
+									<span class="panel-option layer basemap" data-layername="bw">black and white</span>
+									<span class="panel-option layer basemap" data-layername="night">night view</span>
+								</span>
+								<span class="panel-header">overlays</span>
+								<span class="optionList multiSelect" name="overlays">
+									<span class="panel-option layer overlay" data-layername="oldest">asset last locations</span>
+									<span class="panel-option layer overlay" data-layername="trail">asset trails</span>
+									<span class="panel-option layer overlay" data-layername="current">asset locations</span>
+								</span>
+							
+						</div> 
+					</div>
+				</span>
+
+				<div id="nav-minimize-button"></div>
+			</span>
+
+			<div id="nav-title">AVL SAINT PAUL</div>
+		</nav>
+
+		<div id="legend" class="legend-collapsed">
+			<i class="fa fa-chevron-down"></i>
+			<span id="legendContents">
+				<div class="legend-heading">Active Asset Locations</div>
+					<div class="legend-item"> <hr class="blue line"> <span class="legend-item-title"> streets </span></div>
+					<div class="legend-item"> <hr class="yellow line"> <span class="legend-item-title"> parks </span></div>
+					<div class="legend-item"> <hr class="green line"> <span class="legend-item-title"> sewers </span></div>
+					<div class="legend-item"> <hr class="orangered line"> <span class="legend-item-title"> traffic </span></div>
+				<div class="legend-heading">Snowbirds</div>
+					<div class="legend-item"> <hr class="blue dot"> <span class="legend-item-title"> 1 hour </span></div>
+					<div class="legend-item"> <hr class="blue dot"> <span class="legend-item-title"> 6 hours </span></div>
+					<div class="legend-item"> <hr class="blue dot"> <span class="legend-item-title"> 24 hours </span></div>
+					<div class="legend-item"> <hr class="blue dot"> <span class="legend-item-title"> 16 days </span></div>
+				<div class="legend-heading">Inactive Asset Locations</div>
+					<div class="legend-item"> <hr class="yellow dot"> <span class="legend-item-title"> 10-20 min </span></div>
+					<div class="legend-item"> <hr class="orangered dot"> <span class="legend-item-title"> 20+ min </span></div>
+			</span>
+		</div>
+
+		<div id="sidebar">
+
+			<div class="sidebar-menu" id="tracking">
+				<i class="fa fa-location-arrow icon-left"></i> Tracking <i class="fa fa-chevron-down"></i> </span>
+			</div>
+			<div class="sidebar-content" data-target="tracking">
+				<span class="trackingList">
+				</span>
+			</div>
+
+			<div class="sidebar-menu" id="analysis">
+					<i class="fa fa-calendar icon-left"></i> Analysis <i class="fa fa-chevron-down"></i> </span>
+			</div>
+			<div class="sidebar-content" data-target="analysis">
+
+				<div id="analysisError"></div>
+	            <input type='text' id='timeBegin' class="datetime" placeholder="Begin Date..." />
+	            <input type='text' id='timeEnd'  class="datetime" placeholder="End Date..."/>
+
+	            <div class="clearAnalysis">
+	            	<a href="#" id="dataTableButton" class="disabled"><i class="fa fa-bar-chart-o"></i></a>
+	            	<a href="#" id="clearAnalysisButton"><i class="fa fa-times"></i></a>
+	            </div>
+				
+			</div>
+
+			<div id="activeAssets" class="sidebar-menu sidebar-menu-open sticky">
+				<i class="fa fa-rss icon-left"></i> Assets <i class="fa fa-chevron-down"></i> </span>
+			</div>
+
+			<div class="sidebar-content" id="activeAssetContainer" data-target="activeAssets">
+					<input type="text" placeholder="Search..." id="assetSearchBox">
+					<div id="assetList"></div>
+					<div id="searchResults"> </div>
+
+					<div id="upScroll" class="scroll">
+						<i class="fa fa-chevron-circle-up"></i>
+					</div>
+					<div id="downScroll" class="scroll">
+						<i class="fa fa-chevron-circle-down"></i>
+					</div>
+			</div>
+		</div>
+
+		<div id="dataTable">
+			<div class="assetTitle"></div>
+
+		</div>
+
+	</body>
+
+
+</html>

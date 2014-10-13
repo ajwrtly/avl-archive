@@ -1,0 +1,50 @@
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                             //
+//	This is our main CSS file. When compiled, it takes several smaller css files and combines them into one.   //
+//                                                                                                             //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////
+// Import our Partials //
+/////////////////////////
+
+@import 'partials/config';
+@import 'partials/general';
+@import 'partials/legend';
+@import 'partials/nav';
+@import 'partials/sidebar';
+@import 'partials/map';
+@import 'partials/datetime';
+
+/////////////////////////
+//	Basic CSS  		   //
+/////////////////////////
+
+
+	@-moz-keyframes spin {
+	    from { -moz-transform: rotate(0deg); }
+	    to { -moz-transform: rotate(360deg); }
+	}
+	@-webkit-keyframes spin {
+	    from { -webkit-transform: rotate(0deg); }
+	    to { -webkit-transform: rotate(360deg); }
+	}
+	@keyframes spin {
+	    from {transform:rotate(0deg);}
+	    to {transform:rotate(360deg);}
+	}
+
+	html 
+	{
+	    height: 100%;
+	    overflow: hidden;
+	}
+
+	body 
+	{
+		height: 100%;
+		font-family: $font-bodyText;
+		margin: 0;
+	}
+

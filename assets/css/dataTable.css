@@ -1,0 +1,45 @@
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg); }
+
+  to {
+    -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg); }
+
+  to {
+    -webkit-transform: rotate(360deg); } }
+@keyframes spin {
+  from {
+    transform: rotate(0deg); }
+
+  to {
+    transform: rotate(360deg); } }
+body {
+  background-color: #333333;
+  font-family: "Open Sans";
+  font-size: 62.5%; }
+  body #title {
+    padding-left: 10px;
+    color: #fff;
+    font-size: 1.5rem; }
+    body #title #asset {
+      padding-left: 20px;
+      color: #01c7ff; }
+  body table thead th {
+    background-color: #fff; }
+  body table tbody tr:nth-child(odd) {
+    background-color: #cccccc; }
+  body table tbody tr:nth-child(even) {
+    background-color: #ffffff; }
+  body table tbody tr:hover {
+    background-color: #01c7ff; }
+  body .fa-refresh {
+    position: absolute;
+    left: 45%;
+    top: 45%;
+    font-size: 2rem;
+    color: #555555;
+    animation: spin 1s infinite steps(8);
+    -webkit-animation: spin 1s infinite linear; }

@@ -1,0 +1,584 @@
+        nav 
+        {
+
+       		#nav-bar
+       		{
+       			position: absolute;
+       			top: 0;
+       			left: 0;
+       			width: 100%;
+       			height: $navHeight;
+       			background-color: $background-base;
+	       		&.minimized
+	       		{
+	       			position: absolute;
+	       			top: 0;
+	       			left: auto !important;
+	       			right: 0 !important;
+	       			width: 50px;
+	       			margin-left: 0px !important;
+	       			color: $color-menu;
+	                text-align: center;
+	                width: 50px !important;
+	               	.fa-chevron-down {
+		                font-size: $fontSize-xxl;
+		                line-height: 50px;
+		            }
+		            &:hover
+		            {
+		                color: $highlight;
+		                cursor: pointer;	            	
+		            }
+	       		}
+	       		&:not(.minimized)
+	       		{
+	       			.fa-chevron-down {
+		                display: none;
+		            }
+	       		}
+       		}
+		
+       		#nav-title
+       		{
+       			position: absolute;
+       			top: 0;
+       			
+                font-family: $font-title;
+                color: $highlight;
+          
+                line-height: $navHeight;
+                font-weight: bold;
+                
+
+                @media (min-width: 768px)
+				{
+					letter-spacing: 3px;
+					font-size: $fontSize-title;
+					left: 41%;
+					text-align: center;
+				}
+
+				@media (max-width: 767px)
+				{
+					font-size: $fontSize-xxl;
+					text-align: left;
+					padding-left: 15px;
+				}
+
+				&:hover
+				{
+					cursor: pointer;
+					color: $color-highlight;
+				}
+       		}
+
+       		#nav-menu-container
+       		{
+       			.fa
+       			{
+       				font-size: $fontSize-medium;
+       				color: $color-icons;
+       				&.icon-left
+       				{
+       					margin-right: 9px;
+       				}
+       				&.icon-right
+       				{
+       					margin-left: 9px;
+       				}
+       				&.icon-center
+       				{
+       					margin: 0 10px;
+       				}
+		        }
+
+       			@media (min-width: 768px)
+				{       			
+					position: absolute;
+	       			top: 0;
+	       			left: 0;
+	       			width: 100%;
+	       			height: 50px;
+	       			overflow: visible; 
+	       			color: $color-menu;
+					text-transform:uppercase;
+					line-height: $navHeight;
+
+					.collapsed-navTitle
+					{
+						display: none;
+					}
+
+					div.menu-open#menu-assets
+					{
+						.fa
+						{
+							//glyphicon doesn't display when the assets menu is open
+							display: none;
+						}
+					}
+
+
+
+
+       					.nav-menu
+						{
+							font-size: $fontSize-xl;
+							font-family: $font-menus;
+							letter-spacing: 1px; 
+							&.sticky
+							{
+								.fa-chevron-up
+								{
+									display: none;
+								}
+							}
+						}
+       				
+
+	       			.menu-container-left
+	       			{
+	       				width: 20%;
+	       				height: 100%;
+	       				float: left;
+
+						/* Smartphones (portrait and landscape) ----------- */
+						@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+							display: none;
+						}
+
+						/* iPads (portrait and landscape) ----------- */
+						@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+							width: 25%;
+						}
+
+						/* iPads (landscape) ----------- */
+						@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+							width: 25%;
+						}
+
+						/* iPads (portrait) ----------- */
+						@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+							width: 25%;
+						}
+
+						/* Desktops and laptops ----------- */
+						@media only screen  and (min-width : 1025px) and (max-width: 1199px) {
+							width: 25%;
+						}
+
+						/* Desktops and laptops ----------- */
+						@media only screen  and (min-width : 1200px) and (max-width: 1399px) {
+							width: 20%;
+						}
+
+						/* Large screens ----------- */
+						@media only screen  and (min-width : 1400px) {
+							width: 15%;
+						}
+
+	       				.menu-panel-group:first-child > .nav-menu
+	       				{
+	       					padding-left: 20px;
+	       				}
+
+	   					.menu-open
+						{
+							background-color: $background-dark;
+							text-align: center;
+							padding-left: 0 !important;
+							width: 100%;
+						}
+	       			}
+	       			.menu-container-right
+	       			{
+	       				width: auto;
+	       				height: 100%;
+	       				float: right;
+	       				
+	       				.menu-panel-group
+       					{
+	       					display: inline-block;
+
+		       				.nav-menu
+		       				{
+		       					text-align: center;
+		       					padding: 0 15px 0 15px;
+		       					&.menu-open
+		       					{
+		       						background-color: $background-dark;
+		       					}
+		       				}
+		       			}
+
+	       				// menu styles
+		       				.menu-panel-group:first-child > .nav-menu
+		       				{
+		       					//float: left;
+		       				}
+		       				.menu-panel-group:last-child > .nav-menu
+		       				{
+
+		       					//float: right;
+		       					margin-right: 15px;
+
+		       				}
+
+		       			// specific panel styles
+		       				#panel-assets
+							{
+								display: none;
+			       			}
+
+		       				#panel-layers
+							{
+								right: 0px;
+								width: auto;
+			       			}
+
+			       			#panel-fleets
+							{
+								right: 10%;
+							}
+			       	}
+
+			       	//generalized nav panel options
+			       	.nav-panel
+			       	{
+			       		position: absolute;
+			       		top: $navHeight;
+			       		width: auto;
+			       		line-height: 1.2;
+			       		padding: 10px 15px 10px 15px;
+			       		background-color: $background-dark;
+
+		   				.panel-header
+						{
+							padding-bottom: 3px;
+							padding-top: 5px;
+							display: block;
+							font-size: $fontSize-large;
+							font-family: $font-menus;
+							letter-spacing: 2px;
+						}
+
+						.panel-header.collapse
+						{
+							&:hover:not(.selected):not(.disabled)
+							{
+								color: $highlight;
+								cursor: pointer;
+							}
+						}
+
+						.panel-header:first-child
+						{
+							padding-bottom: 3px;
+							padding-top: 0;
+							display: block;
+						}
+
+						.panel-option
+						{
+							padding: 3px 0 3px 20px;
+							font-size: $fontSize-medium;
+							display: block;
+							color: $color-menu-item;
+							font-family: $font-bodyText;
+							&:hover:not(.selected):not(.disabled)
+							{
+								color: $highlight;
+								cursor: pointer;
+							}
+							&.disabled
+							{
+								color: $color-disabled;
+								cursor: default;
+							}
+							&.allFleets
+							{
+								text-align: center;
+								padding: 0 0 10px 0;
+								margin-bottom: 5px;
+								border-bottom: #555555 1px solid;
+								letter-spacing: 2px;
+							}
+						}
+ 
+						.selected
+						{
+							color: $highlight;
+							cursor: pointer;
+							&:active
+							{
+								color: $color-menu;
+							}
+						}
+
+						.panel-group
+						{
+							display: none;
+							position: relative;
+						}
+
+
+			       	}
+
+					.nav-menu:not(.disabled):hover
+					{
+						color: $color-highlight;
+						cursor: pointer;
+					}
+				}
+				@media (max-width: 767px)
+				{
+					display: none;
+					position: absolute;
+					top: 50px;
+					width: 100%;
+					background-color: $background-dark;
+					color: $color-menu;
+					font-size: $fontSize-large;
+
+					.collapsed-navTitle
+					{
+						display: inline-block;
+					}
+
+					.nav-menu
+					{
+						padding-left: 40px;
+						padding-top: 20px;
+						padding-bottom: 20px;
+						border-style: solid;
+						border-width: 0;
+						border-bottom-width: 1px;
+						border-color: #444444;
+						border-top-color: $background-dark;
+						border-top-width: 1px;
+						text-transform: uppercase;
+
+						.fa
+						{
+							display: inline-block;
+							float: right;
+							font-size: $fontSize-large;
+							padding-right: 30px;
+							padding-top: 5px;
+						}
+						&:active
+						{
+							background-color: $highlight;
+						}
+					}
+	
+					.nav-panel
+					{
+						display: none;
+						//padding: 10px 30px 10px 30px;
+						background-color: $background-base;
+						text-transform: uppercase;
+
+						.panel-header
+						{
+							display: block;
+							padding: 15px 0 15px 40px;
+							background-color: $background-light;
+						}
+
+						.panel-option
+						{
+							display: block;
+							padding: 20px 0 20px 60px;
+							border-style: solid;
+							border-color: $color-disabled;
+							border-width: 0 0 1px 0;
+							right: 0 !important;
+							&:last-child
+							{
+								border-width: 0 0 0 0;
+							}
+							&:active
+							{
+								background-color: $highlight;
+							}
+						}
+
+                   		.selected {
+                        	color: $color-disabled;
+                   		}
+
+						input
+						{
+							margin-right: 20px;
+						}
+
+
+					}
+
+
+					.menu-panel-group
+					{
+						.centerContents
+						{
+							display: block;
+							width: 100%;
+							text-align: center;
+
+							#collapsed-assetSearchBox
+							{
+								background-color: $color-menu;
+								color: $background-base;
+								height: 40px;
+								padding: 0px 12px;
+								font-size: $fontSize-large;
+								line-height: 1.42857143;
+								border: 1px solid #ccc;
+								-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+								box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+								-webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+								transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+								margin: 20px;
+							}
+						}
+
+						#panel-layers
+						{
+
+							.selected
+							{
+								color: $highlight;
+							}
+		       			}
+
+						#collapsed-searchResults
+						{
+							display: none;
+							
+
+							.assetListItem
+							{
+								padding-left: 30px;
+								display: block;
+								padding-top: 10px;
+								padding-bottom: 10px;
+								background-color: $background-base;
+								border-style: solid;
+								border-width: 1px 0 0 0;
+								border-color: $color-disabled;
+
+							}
+
+							.assetListItem + .tracked
+							{
+
+							}
+						}
+
+						#collapsed-trackingContainer
+						{
+							display: none;
+							padding: 0 0 0 35px;
+							background-color: $color-disabled;
+							color: $highlight;
+
+							#collapsed-trackingList
+							{
+								color: #cccccc;
+
+								margin-left: 10px;
+								.collapsed-trackingListItem
+								{
+									width: auto;
+									padding: 10px 15px 10px 15px;
+									border-style: solid;
+									border-width: 0 0 0 1px;
+									border-color: $background-base;
+									display: inline-block;
+								}
+								.collapsed-trackingListItem:last-child
+								{
+									border-right-width: 1px;
+								} 
+								.collapsed-trackingListItem:active
+								{
+									background-color: $background-dark;
+								} 
+
+							}
+						}
+
+					}
+				}
+       		}
+
+       		#nav-minimize-button
+       		{
+       			position: absolute;
+       			right: 0;
+       			top: 0;
+       			width: 15px;
+       			height: 50px;
+       			background-color: $color-disabled;
+                font-size: $fontSize-title;
+                text-align: center;
+                @media (max-width: 767px)
+                {
+                	display: none;
+                }
+                &:hover
+                {
+                	background-color: $highlight;
+                	cursor: pointer;
+                }
+       		}
+
+            #nav-collapsed-button
+            {
+        		@media (min-width: 768px)
+				{
+					display: none;
+				}
+				@media (max-width: 767px)
+				{
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    right: 10px;
+                    background-color: $background-base;
+                    padding: 7px;
+                    padding-top: 8px;
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+                    margin-right: 2px;
+                    margin-left: 2px;
+                    border-style: solid;
+                    border-color: #444444;
+                    border-radius: 5px;
+                    border-width: 1px;
+                    .icon-bar {
+                        display: block;
+                        width: 30px;
+                        height: 4px;
+                        background-color: $color-menu;
+                        border-radius: 1px;
+                        margin-bottom: 5px;
+                        &:last-of-type
+                        {
+                        	margin-bottom: 0px;
+                        }
+                    }
+
+				}
+
+				&:hover
+				{
+					background-color: $background-dark;
+	                cursor: pointer;
+	                .icon-bar {
+	                    background-color: $highlight;
+	                    cursor: pointer;
+	                }
+				}
+            }
+        }

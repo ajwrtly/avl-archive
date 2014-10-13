@@ -1,0 +1,73 @@
+@import 'partials/config';
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+body
+{
+	background-color: #333333;
+	font-family: "Open Sans";
+	font-size: 62.5%;
+
+	#title
+	{
+		padding-left: 10px;
+		color: #fff;
+		font-size: 1.5rem;
+
+		#asset
+		{
+			padding-left: 20px;
+			color: $highlight;
+		}
+	}
+
+	table
+	{
+		thead
+		{
+			th 
+			{
+				background-color: #fff;
+			}
+		}
+		tbody
+		{
+			tr:nth-child(odd)
+			{
+				background-color: #cccccc;
+			}
+			tr:nth-child(even)
+			{
+				background-color: #ffffff;
+			}
+			tr:hover
+			{
+				background-color: $highlight;
+			}
+		}
+	}
+
+	.fa-refresh
+	{
+		position: absolute;
+		left: 45%;
+		top: 45%;
+		font-size: 2rem;
+		color: $color-disabled; 
+		animation: spin 1s infinite steps(8);
+		-webkit-animation: spin 1s infinite linear;
+	}
+
+}
+
